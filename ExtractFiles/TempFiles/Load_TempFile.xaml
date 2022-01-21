@@ -226,7 +226,7 @@
                                         </scg:List>
                                       </ui:MultipleAssign.AssignOperations>
                                     </ui:MultipleAssign>
-                                    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Send_ExceptionMail workflow" sap:VirtualizedContainerService.HintSize="430,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Send_ExceptionMail.xaml">
+                                    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Send_ExceptionMail workflow" sap:VirtualizedContainerService.HintSize="430,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Email\Sending\Send_ExceptionMail.xaml">
                                       <ui:InvokeWorkflowFile.Arguments>
                                         <InArgument x:TypeArguments="si:FileInfo" x:Key="in_FileInfo">[in_CurrentFile]</InArgument>
                                         <InArgument x:TypeArguments="s:Exception" x:Key="in_Exception">[exception]</InArgument>
