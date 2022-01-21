@@ -1,0 +1,491 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Extract_PDFCV" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:p="http://schemas.uipath.com/workflow/activities/cv" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Drawing;assembly=System.Drawing" xmlns:sd1="clr-namespace:System.Data;assembly=System.Data" xmlns:si="clr-namespace:System.IO;assembly=mscorlib" xmlns:uc="clr-namespace:UiPath.CV;assembly=UiPath.CV" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:uvo="clr-namespace:UiPath.Vision.OCR;assembly=UiPath.Vision.Core" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="io_dct_Config" Type="InOutArgument(scg:Dictionary(x:String, x:String))" />
+    <x:Property Name="io_PDF" Type="InOutArgument(si:FileInfo)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>936.8,3568</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>Extract_PDFCV_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="48">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>UiPath.CV</x:String>
+      <x:String>UiPath.Shared.ObjectLibrary</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>UiPath.CV.Activities</x:String>
+      <x:String>UiPath.CV.Activities.Interfaces</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.PDF.Activities</x:String>
+      <x:String>UiPath.Vision.OCR</x:String>
+      <x:String>UiPath.OCR.Contracts</x:String>
+      <x:String>UiPath.OCR.Contracts.Activities</x:String>
+      <x:String>UiPath.Core.Activities.OCR.Engines</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>UiPath.Core.Activities.TextModifications</x:String>
+      <x:String>UiPath.Activities.System.Workflow.Business</x:String>
+      <x:String>UiPath.DataTableUtilities</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>UiPath.Platform.Triggers</x:String>
+      <x:String>UiPath.Platform.Triggers.Scope</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="39">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.CV</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.CV.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.PDF.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Vision.Core</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Contracts</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="Extract_PDFCV" sap:VirtualizedContainerService.HintSize="550.4,3503.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="sd1:DataTable" Name="dt_ExtractedTable" />
+      <Variable x:TypeArguments="sd1:DataTable" Name="dt_Output" />
+      <Variable x:TypeArguments="x:String" Name="dt_OutputString" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="Log Start Loading" sap:VirtualizedContainerService.HintSize="508.8,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;Extract_PDF started...&quot;]" />
+    <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Application: robert-jan@flowrobotics.nl=ScannedPDF.pdf - Adobe Acrobat Reader DC (64-bit)" sap:VirtualizedContainerService.HintSize="508.8,822.4" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" ScopeGuid="0351bb60-927c-496e-baf5-022e554f22f0" Version="V1">
+      <uix:NApplicationCard.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="375.2,531.2" sap2010:WorkflowViewState.IdRef="Sequence_6">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DeselectAfter="False" DisplayName="Change Zoom Level to 75%" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="333.6,218.4" sap2010:WorkflowViewState.IdRef="NTypeInto_1" ScopeIdentifier="0351bb60-927c-496e-baf5-022e554f22f0" Text="75%" Version="V1">
+              <uix:NTypeInto.Target>
+                <uix:TargetAnchorable DesignTimeRectangle="1531, 246, 105, 46" ElementType="InputBox" FriendlyName="'105%'" FullSelectorArgument="&lt;wnd aaname='Zoomwaarde' cls='Edit' /&gt;" FuzzySelectorArgument="&lt;wnd aaname='Zoomwaarde' cls='Edit' /&gt;" Guid="94e72fb2-87c4-48a9-bac3-d45787ab73eb" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAG0AAAAyCAYAAABWIFV0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAMzSURBVHhe7ZrReYQgDIC74K3CJC7CIO7BHvdAgTMkAkG0ak2bh//72p4gl58E0H6932+vyEKlCUSlCUSlCUSlCUSlCUSlCUSlCUSlCUSlCUSlCUSlCUSlCUSlCeQ+aW72k3l5Y1378wrn3Tx5E9q8XoDxZrJ+dq3rEWcNacNhvOX6SWOlfcT7zt61rqU46026fvJz6/OTuEVaCv4SgDFpztuVrBLjp7nV7sM8tdqUMNLCWOEaYyY/TTj2vgwcc29sZ3CpNDfblF0QhBSITWlUWJSD18f+MIB8pmRpMTtcyFiGum3IsGbfbtXnus0CyOY+P5FLpDlLZ2cklJfl501peaYzUnIJCjABggCPl+IPUFab7bqlD2RfWxaBC6StS9tnLcC/9QNJ2nZmLK5ZrSCN3qsGZLfLG/RbT6ajk+QoF0lbFu785QYDSbKouy50rzsqjZfS/Rwqg7HbG5WTuGUjMhzIXBq3ygyUo1Z/+NneDcFYptGxcWvgtTxKWi57m7MW+6vL6HFpQ2saGdvdZRF4lDQIwsgOLF9bCUZpJXELb8lutCKX3TJzcPeYx/8LZRH4e9LIescS5HEHdHow/5zTcOeL4/qdsgg8SFqv5NXwmRYCn89i5Pd0ZkQhvXWzOl+GdvS8WGVdalM8vSnanMmflNZjlUmdrGdplMU5ZGPucwrZSSfHwHfZi/zyuDsoZHLsXo8aZZFb2+Lzy3Tt/g3RFs+UthnMfVlZ0j+c89S7SxgHs7aB0JOz7VHSxoOJs/hHJW6PtMaWH8fB9NNs83MeJQ2DubErY7fmY+zPNC6jFmmclH8hbTCDctAPBQPHMto+368qc5ppCcwCJotylh1b4LH/wfb5fi0xXAZ+gHsdKuEdHieNZlsKBvc+jZm96bVQersdzmb07+Xb6KHNAY6bE8xmfd49HivhPR4oLUCyqUmn3NBM4hj614FA7qsrGL9bFFSe087OssgzpSXi8z7yCCmyPGXoBjzMcBvb5UBi25H/L8l0y2JJGGvx4jc95zw5w4CbpClnotIEotIEotIEotIEotIEotIEotIEotIEotIEotIEotIEotIEotIEotLE8fbfVKaUrgCQVuAAAAAASUVORK5CYII=" InformativeScreenshot="be8148304283c05c8f79d496c82308fb.png" ScopeSelectorArgument="&lt;wnd app='acrobat.exe' cls='AcrobatSDIWindow' title='robert-jan@flowrobotics.nl=ScannedPDF.pdf - Adobe Acrobat Reader*' /&gt;" SearchSteps="Selector, FuzzySelector">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                      <uix:Target DesignTimeRectangle="1526, 232, 115, 70" ElementType="InputBox" FriendlyName="'105%'" FullSelectorArgument="&lt;wnd cls='AVL_AVView' title='AVDocumentMainView' /&gt;&lt;ctrl name='Zoomwaarde' role='editable text' /&gt;" FuzzySelectorArgument="&lt;wnd cls='AVL_AVView' title='AVDocumentMainView' /&gt;&lt;ctrl name='Zoomwaarde' role='editable text' automationid='' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAHcAAABKCAYAAACB3cv5AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAOHSURBVHhe7ZrdlaQgEEY3wU6FSEzEQHzqJMijHxig5UehEN3Rtr/5Hu45u6MgU5cqwPHf6/UyBBPKBYZygaFcYCgXGMoFhnKBoVxgKBcYygWGcoGhXGAoFxjKBYZygaFcYCgXGMoFhnKBoVxgKBcYygWGcoGhXGAoFxjKBYZygaFcYD4rV09mUA+jRl2/XqCNngajbJvHI6CMGkYz6dr9CT2qrI2EMqPUjx9r3od77mR07d4cPRrl7x/MVLt+Ih+T6yXNgeqTq824kLpGmWGqtXszDbU2awS5dqzhHqUGMwxp7G1pacytsZ3F5XL1NPpsDcHyAduUm4t1EtP9rr8UaDnzolyXbdpWAIGyrc3Yat960eeyzUyYFNL1k7lMrh7z2e6wZW3+96bcmDmCvFj6LEIgg4j+JeBNKOfVds2SGybF9eU4cJHcZUl9r1XpZ+2AZ20bGZDW1Fowe59VEiZFvayGfstJd3Qy/SYXyp03IDEInQHPsrK5bjXvOypXlte8HiqNGrc3XCfysQ1Vd8BjSd4qb6EM1vpL1/ZubPoyNx+btEZfz+3lxnK7mQWpv7J8H5fbteZmY7tDOQ7cXm4IVs+OM95bTIQkd4072ozZ7rsglvt1Jqbdchz/Tcpx4G/IzdZjEStZehGSvwB5n3PTTj+N6z7lOHBzua1SWyJnrhUUz7LZ//2ZO4lrrevF+dy2y8/bRRb7Nqu3aas2Z/Nn5LZYZGajiohUyvFkszv2OdhszydRx+/yG2CW5d3ByybR7vWyUo6ltde9n/b37t/YHeF75G4GfV+Wr2m/BJEpd9NhHMLaG8RfkL23l9sf9JQV/1Va98itHIXSOIR+qm3O4fZyU9A3dqHikaWP/ZkrZegsV5JHuTl9GRnlHApaGktv+/i8orwycy29cvOsErIyZu2xjUrqv7N9fF5NoJTRb8KzDi0dO/kKuXn2+qBJf88VssH/udF/rWHPtvnP119XdG1y0riliSBWkbhbPrZ07OVL5Fqy7KzSKHN5Zkp0fTJjiX01J0L63ZzI9Tn3iqx1fI9cj3ufm736c8xvfZpibMaMrl0MeGrb8/1VpFmO19ixrj5Q8O+xL8jYwAflkrOhXGAoFxjKBYZygaFcYCgXGMoFhnKBoVxgKBcYygWGcoGhXGAoFxjKBYZygaFcYCgXGMoFhnKBoVxgotzn80nAYOYCQ7mwvMwPHDb0GxMqC9MAAAAASUVORK5CYII=" SearchSteps="Selector, FuzzySelector" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NTypeInto.Target>
+            </uix:NTypeInto>
+            <uix:NKeyboardShortcuts DelayBetweenShortcuts="{x:Null}" ActivateBefore="True" ClickBeforeMode="None" DisplayName="Keyboard Shortcuts" sap:VirtualizedContainerService.HintSize="333.6,178.4" sap2010:WorkflowViewState.IdRef="NKeyboardShortcuts_1" Shortcuts="[d(hk)][k(enter)][u(hk)]" Version="V1" />
+          </Sequence>
+        </ActivityAction>
+      </uix:NApplicationCard.Body>
+      <uix:NApplicationCard.TargetApp>
+        <uix:TargetApp Area="452, 230, 3370, 1820" FilePath="C:\Program Files\Adobe\Acrobat DC\Acrobat\acrobat.exe" IconBase64="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" InformativeScreenshot="26276de0c99bd444ea1586658e70cbbf.png" Selector="&lt;wnd app='acrobat.exe' cls='AcrobatSDIWindow' omit:title='robert-jan@flowrobotics.nl=ScannedPDF.pdf - Adobe Acrobat Reader*' /&gt;" />
+      </uix:NApplicationCard.TargetApp>
+    </uix:NApplicationCard>
+    <TryCatch sap2010:Annotation.AnnotationText="Try to read the file with CV, throws an OCRException if failed, sends an exception mail to the sender and moves on with the next file." DisplayName="Try to read with CV" sap:VirtualizedContainerService.HintSize="508.8,618.4" sap2010:WorkflowViewState.IdRef="TryCatch_2">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <TryCatch.Try>
+        <p:CVScope ContinueOnError="{x:Null}" DelayBefore="{x:Null}" Server="{x:Null}" ApiKey="bxJvsKSL0f9jg90/Dnxo0HrhEVwTQkuZRa7BYGG/WRYmJ0jqYfaXmrm1ctJYlQlQKuDkF7sKShSq2J3H9lw/Cg==" CvMethod="ElementDetection, OCR" DesignTimeCacheId="aedbc2cf-47e1-4fb1-9645-28e5936d6a73" DisplayName="CV Screen Scope 'graphic'" sap:VirtualizedContainerService.HintSize="433.6,449.6" sap2010:WorkflowViewState.IdRef="CVScope_1" Version="V3">
+          <p:CVScope.Body>
+            <ActivityAction x:TypeArguments="x:Object">
+              <ActivityAction.Argument>
+                <DelegateInArgument x:TypeArguments="x:Object" Name="CVSessionData" />
+              </ActivityAction.Argument>
+              <Sequence DisplayName="Do" sap2010:WorkflowViewState.IdRef="Sequence_2">
+                <p:CvExtractDataTableWithDescriptor InRegion="{x:Null}" AddHeaders="True" Descriptor="[&quot;Target: Table (0,11,738,310)&quot;]" DesignTimeCacheId="aedbc2cf-47e1-4fb1-9645-28e5936d6a73" DesignTimeScaleFactor="1" DisplayName="CV Extract Table - Table" sap:VirtualizedContainerService.HintSize="400,137.6" sap2010:WorkflowViewState.IdRef="CvExtractDataTableWithDescriptor_1" IgnoreEmptyRows="False" InformativeScreenshot="9484141eb30720277bfc78e054d49ac5" RefreshBefore="True" Result="[dt_ExtractedTable]" Scroll="False" Version="V3">
+                  <p:CvExtractDataTableWithDescriptor.DesignTimeDescriptor>
+                    <uc:CvDescriptor>
+                      <uc:CvDescriptor.Target>
+                        <uc:CvElementDescriptor CellExtraInfo="{x:Null}" DesignTimeArea="0, 11, 738, 310" ElementType="Table" />
+                      </uc:CvDescriptor.Target>
+                    </uc:CvDescriptor>
+                  </p:CvExtractDataTableWithDescriptor.DesignTimeDescriptor>
+                </p:CvExtractDataTableWithDescriptor>
+              </Sequence>
+            </ActivityAction>
+          </p:CVScope.Body>
+          <p:CVScope.DesignTimeCache>
+            <uc:CVCache CvUiElements="{x:Null}" OcrTexts="{x:Null}" />
+          </p:CVScope.DesignTimeCache>
+          <p:CVScope.DesignTimeCacheContainer>
+            <uc:CvCacheContainer>
+              <uc:CvCacheContainer.Caches>
+                <scg:List x:TypeArguments="uc:CVCache" Capacity="1">
+                  <uc:CVCache DisplayName="Screen CV Extract Table - Tabl (Main)" Id="aedbc2cf-47e1-4fb1-9645-28e5936d6a73" InformativeScreenshot="34a5a9974527bd9c6a91ea41155ca97f" LogicalPosition="591, 459" OcrText="Cashin | OnUsCheck | NotOnUscheck&#xA;12 | 4| 122 |&#xA;13 | 3 | 1333 |&#xA;| 15 | 2 | 2333 |&#xA;25 | 1] 4444 |" Position="591, 459" ScreenshotGuid="b98cf2c1-cf14-40b2-8dc4-3d03c634e1c3" ServerVersion="1">
+                    <uc:CVCache.CvTables>
+                      <x:Array Type="uc:CvTableInfo">
+                        <uc:CvTableInfo>
+                          <uc:CvTableInfo.Columns>
+                            <x:Array Type="x:Int32">
+                              <x:Int32>0</x:Int32>
+                              <x:Int32>11</x:Int32>
+                              <x:Int32>201</x:Int32>
+                              <x:Int32>434</x:Int32>
+                              <x:Int32>728</x:Int32>
+                              <x:Int32>738</x:Int32>
+                            </x:Array>
+                          </uc:CvTableInfo.Columns>
+                          <uc:CvTableInfo.Rows>
+                            <x:Array Type="x:Int32">
+                              <x:Int32>11</x:Int32>
+                              <x:Int32>75</x:Int32>
+                              <x:Int32>136</x:Int32>
+                              <x:Int32>196</x:Int32>
+                              <x:Int32>259</x:Int32>
+                              <x:Int32>321</x:Int32>
+                            </x:Array>
+                          </uc:CvTableInfo.Rows>
+                        </uc:CvTableInfo>
+                      </x:Array>
+                    </uc:CVCache.CvTables>
+                    <uc:CVCache.CvUiElements>
+                      <scg:List x:TypeArguments="uc:CvElementInfo" Capacity="64">
+                        <uc:CvElementInfo Category="Cell" Region="11, 259, 190, 62" />
+                        <uc:CvElementInfo Category="Cell" Region="11, 136, 190, 60" />
+                        <uc:CvElementInfo Category="Cell" Region="11, 196, 190, 63" />
+                        <uc:CvElementInfo Category="Cell" Region="201, 136, 233, 60" />
+                        <uc:CvElementInfo Category="Cell" Region="11, 75, 190, 61" />
+                        <uc:CvElementInfo Category="Cell" Region="434, 75, 294, 61" />
+                        <uc:CvElementInfo Category="Cell" Region="11, 11, 190, 64" />
+                        <uc:CvElementInfo Category="Cell" Region="434, 196, 294, 63" />
+                        <uc:CvElementInfo Category="Cell" Region="434, 136, 294, 60" />
+                        <uc:CvElementInfo Category="Cell" Region="201, 259, 233, 62" />
+                        <uc:CvElementInfo Category="Cell" Region="434, 259, 294, 62" />
+                        <uc:CvElementInfo Category="Cell" Region="201, 196, 233, 63" />
+                        <uc:CvElementInfo Category="Cell" Region="201, 75, 233, 61" />
+                        <uc:CvElementInfo Category="Cell" Region="201, 11, 233, 64" />
+                        <uc:CvElementInfo Category="Cell" Region="434, 11, 294, 64" />
+                        <uc:CvElementInfo Category="Cell" Region="726, 15, 24, 61" />
+                        <uc:CvElementInfo Category="Button" Confidence="Runtime" Region="15, 262, 188, 61" />
+                        <uc:CvElementInfo Category="Button" Confidence="Runtime" Region="20, 14, 184, 66" />
+                        <uc:CvElementInfo Category="Button" Confidence="Runtime" Region="13, 78, 190, 59" />
+                        <uc:CvElementInfo Category="Button" Confidence="Runtime" Region="424, 13, 311, 66" />
+                        <uc:CvElementInfo Category="Cell" Confidence="Runtime" Region="0, 136, 11, 60" />
+                        <uc:CvElementInfo Category="Cell" Confidence="Runtime" Region="0, 196, 11, 63" />
+                        <uc:CvElementInfo Category="Cell" Confidence="Runtime" Region="726, 136, 24, 63" />
+                        <uc:CvElementInfo Category="Cell" Confidence="Runtime" Region="726, 202, 24, 54" />
+                        <uc:CvElementInfo Category="Cell" Confidence="Runtime" Region="727, 264, 23, 61" />
+                        <uc:CvElementInfo Category="Cell" Confidence="Runtime" Region="0, 11, 11, 64" />
+                        <uc:CvElementInfo Category="Cell" Confidence="Runtime" Region="0, 231, 15, 96" />
+                        <uc:CvElementInfo Category="Cell" Confidence="Runtime" Region="728, 196, 10, 63" />
+                        <uc:CvElementInfo Category="Cell" Confidence="Runtime" Region="0, 75, 11, 61" />
+                        <uc:CvElementInfo Category="Cell" Confidence="Runtime" Region="726, 75, 24, 65" />
+                        <uc:CvElementInfo Category="Cell" Confidence="Runtime" Region="728, 259, 10, 62" />
+                        <uc:CvElementInfo Category="Cell" Confidence="Runtime" Region="432, 1, 297, 14" />
+                        <uc:CvElementInfo Category="Cell" Confidence="Runtime" Region="0, 0, 15, 168" />
+                        <uc:CvElementInfo Category="Cell" Confidence="Runtime" Region="725, 308, 25, 22" />
+                        <uc:CvElementInfo Category="Cell" Confidence="Runtime" Region="728, 136, 10, 60" />
+                        <uc:CvElementInfo Category="Cell" Confidence="Runtime" Region="0, 259, 11, 62" />
+                      </scg:List>
+                    </uc:CVCache.CvUiElements>
+                    <uc:CVCache.OcrTexts>
+                      <scg:List x:TypeArguments="uc:OcrTextInfo" Capacity="32">
+                        <uc:OcrTextInfo Region="38, 29, 108, 44" Text="Cashin" />
+                        <uc:OcrTextInfo Region="203, 16, 2, 59" Text="|" />
+                        <uc:OcrTextInfo Region="226, 29, 198, 44" Text="OnUsCheck" />
+                        <uc:OcrTextInfo Region="436, 16, 2, 59" Text="|" />
+                        <uc:OcrTextInfo Region="461, 29, 252, 44" Text="NotOnUscheck" />
+                        <uc:OcrTextInfo Region="144, 96, 36, 27" Text="12" />
+                        <uc:OcrTextInfo Region="203, 77, 2, 60" Text="|" />
+                        <uc:OcrTextInfo Region="398, 77, 40, 60" Text="4|" />
+                        <uc:OcrTextInfo Region="649, 77, 84, 60" Text="122" />
+                        <uc:OcrTextInfo Region="701, 73, 35, 68" Text="|" />
+                        <uc:OcrTextInfo Region="144, 157, 36, 28" Text="13" />
+                        <uc:OcrTextInfo Region="203, 139, 2, 59" Text="|" />
+                        <uc:OcrTextInfo Region="399, 157, 16, 28" Text="3" />
+                        <uc:OcrTextInfo Region="436, 139, 2, 59" Text="|" />
+                        <uc:OcrTextInfo Region="628, 139, 104, 59" Text="1333" />
+                        <uc:OcrTextInfo Region="702, 135, 34, 67" Text="|" />
+                        <uc:OcrTextInfo Region="14, 200, 3, 59" Text="|" />
+                        <uc:OcrTextInfo Region="144, 219, 36, 27" Text="15" />
+                        <uc:OcrTextInfo Region="203, 200, 2, 59" Text="|" />
+                        <uc:OcrTextInfo Region="399, 218, 17, 27" Text="2" />
+                        <uc:OcrTextInfo Region="417, 196, 12, 67" Text="|" />
+                        <uc:OcrTextInfo Region="627, 200, 104, 59" Text="2333" />
+                        <uc:OcrTextInfo Region="701, 196, 34, 67" Text="|" />
+                        <uc:OcrTextInfo Region="143, 280, 36, 27" Text="25" />
+                        <uc:OcrTextInfo Region="203, 262, 2, 59" Text="|" />
+                        <uc:OcrTextInfo Region="400, 262, 38, 59" Text="1]" />
+                        <uc:OcrTextInfo Region="626, 262, 108, 59" Text="4444" />
+                        <uc:OcrTextInfo Region="705, 258, 24, 67" Text="|" />
+                      </scg:List>
+                    </uc:CVCache.OcrTexts>
+                  </uc:CVCache>
+                </scg:List>
+              </uc:CvCacheContainer.Caches>
+            </uc:CvCacheContainer>
+          </p:CVScope.DesignTimeCacheContainer>
+          <p:CVScope.OCREngine>
+            <ActivityFunc x:TypeArguments="sd:Image, scg:IEnumerable(scg:KeyValuePair(sd:Rectangle, x:String))">
+              <ActivityFunc.Argument>
+                <DelegateInArgument x:TypeArguments="sd:Image" Name="Image" />
+              </ActivityFunc.Argument>
+              <ui:GoogleOCR AllowedCharacters="{x:Null}" DeniedCharacters="{x:Null}" FilterRegion="{x:Null}" Invert="{x:Null}" Language="{x:Null}" Output="{x:Null}" Profile="{x:Null}" Scale="{x:Null}" Text="{x:Null}" ComputeSkewAngle="False" DisplayName="Tesseract OCR" ExtractWords="True" sap:VirtualizedContainerService.HintSize="200,22.4" sap2010:WorkflowViewState.IdRef="GoogleOCR_1" Image="[Image]" />
+            </ActivityFunc>
+          </p:CVScope.OCREngine>
+          <p:CVScope.Target>
+            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="bb50d602-793c-4f5d-a57f-3245f55ebc2d" InformativeScreenshot="71dd52084ccda4640d27c8bfd75c4a26" Selector="&lt;wnd app='acrobat.exe' cls='AcrobatSDIWindow' omit:title='robert-jan@flowrobotics.nl=ScannedPDF.pdf - Adobe Acrobat Reader*' /&gt;&lt;wnd aaname='Documentvenster' cls='AVL_AVView' title='AVScrolledPageView' /&gt;&lt;wnd cls='AVL_AVView' title='AVPageView' /&gt;&lt;ctrl role='graphic' /&gt;" WaitForReady="INTERACTIVE">
+              <ui:Target.TimeoutMS>
+                <InArgument x:TypeArguments="x:Int32" />
+              </ui:Target.TimeoutMS>
+            </ui:Target>
+          </p:CVScope.Target>
+          <p:CVScope.UseLocalServer>
+            <InArgument x:TypeArguments="x:Boolean" />
+          </p:CVScope.UseLocalServer>
+        </p:CVScope>
+      </TryCatch.Try>
+      <TryCatch.Catches>
+        <Catch x:TypeArguments="uvo:OCRException" sap:VirtualizedContainerService.HintSize="400,409.6" sap2010:WorkflowViewState.IdRef="Catch`1_2">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ActivityAction x:TypeArguments="uvo:OCRException">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="uvo:OCRException" Name="exception" />
+            </ActivityAction.Argument>
+            <Sequence sap:VirtualizedContainerService.HintSize="375.2,339.2" sap2010:WorkflowViewState.IdRef="Sequence_5">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Error" Message="[&quot;Table not found, skipping file.&quot;]" />
+              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Send_ExceptionMail workflow" sap:VirtualizedContainerService.HintSize="333.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Send_ExceptionMail.xaml">
+                <ui:InvokeWorkflowFile.Arguments>
+                  <InArgument x:TypeArguments="si:FileInfo" x:Key="in_FileInfo">[io_PDF]</InArgument>
+                  <InArgument x:TypeArguments="s:Exception" x:Key="in_Exception">[exception]</InArgument>
+                </ui:InvokeWorkflowFile.Arguments>
+              </ui:InvokeWorkflowFile>
+            </Sequence>
+          </ActivityAction>
+        </Catch>
+      </TryCatch.Catches>
+    </TryCatch>
+    <ui:BuildDataTable sap2010:Annotation.AnnotationText="Builds the datatable for extracted info." DataTable="[dt_Output]" DisplayName="Build Data Table" sap:VirtualizedContainerService.HintSize="508.8,91.2" sap2010:WorkflowViewState.IdRef="BuildDataTable_1" TableInfo="&lt;NewDataSet&gt;&#xD;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xD;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xD;&#xA;      &lt;xs:complexType&gt;&#xD;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xD;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xD;&#xA;            &lt;xs:complexType&gt;&#xD;&#xA;              &lt;xs:sequence&gt;&#xD;&#xA;                &lt;xs:element name=&quot;Cashin&quot; msdata:Caption=&quot;&quot; type=&quot;xs:int&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;OnUsCheck&quot; msdata:Caption=&quot;&quot; type=&quot;xs:int&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;NotOnUsCheck&quot; msdata:Caption=&quot;&quot; type=&quot;xs:int&quot; /&gt;&#xD;&#xA;              &lt;/xs:sequence&gt;&#xD;&#xA;            &lt;/xs:complexType&gt;&#xD;&#xA;          &lt;/xs:element&gt;&#xD;&#xA;        &lt;/xs:choice&gt;&#xD;&#xA;      &lt;/xs:complexType&gt;&#xD;&#xA;    &lt;/xs:element&gt;&#xD;&#xA;  &lt;/xs:schema&gt;&#xD;&#xA;&lt;/NewDataSet&gt;">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:BuildDataTable>
+    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="For each row in the extracted datatable, the data is trimmed and input into a new DataTable." DataTable="[dt_ExtractedTable]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="508.8,1339.2" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+      <ui:ForEachRow.Body>
+        <ActivityAction x:TypeArguments="sd1:DataRow">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="sd1:DataRow" Name="CurrentRow" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="475.2,1174.4" sap2010:WorkflowViewState.IdRef="Sequence_3">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="x:String" Name="str_Cashin" />
+              <Variable x:TypeArguments="x:String" Name="str_OnUsCheck" />
+              <Variable x:TypeArguments="x:String" Name="str_NotOnUsCheck" />
+              <Variable x:TypeArguments="x:String" Name="CashInTest" />
+              <Variable x:TypeArguments="x:Int32" Name="Cashin" />
+              <Variable x:TypeArguments="x:Int32" Name="OnUsCheck" />
+              <Variable x:TypeArguments="x:Int32" Name="NotOnUsCheck" />
+            </Sequence.Variables>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:MultipleAssign sap2010:Annotation.AnnotationText="All rows are trimmed from &quot; &quot;, &quot;|&quot; and &quot;]&quot; and saved into new variables." DisplayName="Trim All Data" sap:VirtualizedContainerService.HintSize="433.6,195.2" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+              <ui:MultipleAssign.AssignOperations>
+                <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
+                    <ui:AssignOperation.To>
+                      <OutArgument x:TypeArguments="x:String">[str_Cashin]</OutArgument>
+                    </ui:AssignOperation.To>
+                    <ui:AssignOperation.Value>
+                      <InArgument x:TypeArguments="x:String">[CurrentRow(1).ToString.Trim("|".ToCharArray).Trim(" ".ToCharArray).Trim("]".ToCharArray)]</InArgument>
+                    </ui:AssignOperation.Value>
+                  </ui:AssignOperation>
+                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_2">
+                    <ui:AssignOperation.To>
+                      <OutArgument x:TypeArguments="x:String">[str_OnUsCheck]</OutArgument>
+                    </ui:AssignOperation.To>
+                    <ui:AssignOperation.Value>
+                      <InArgument x:TypeArguments="x:String">[CurrentRow(2).ToString.Trim("|".ToCharArray).Trim(" ".ToCharArray).Trim("]".ToCharArray)]</InArgument>
+                    </ui:AssignOperation.Value>
+                  </ui:AssignOperation>
+                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_3">
+                    <ui:AssignOperation.To>
+                      <OutArgument x:TypeArguments="x:String">[str_NotOnUsCheck]</OutArgument>
+                    </ui:AssignOperation.To>
+                    <ui:AssignOperation.Value>
+                      <InArgument x:TypeArguments="x:String">[CurrentRow(3).ToString.Trim("|".ToCharArray).Trim(" ".ToCharArray).Trim("]".ToCharArray)]</InArgument>
+                    </ui:AssignOperation.Value>
+                  </ui:AssignOperation>
+                </scg:List>
+              </ui:MultipleAssign.AssignOperations>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:MultipleAssign>
+            <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="433.6,574.4" sap2010:WorkflowViewState.IdRef="TryCatch_3">
+              <TryCatch.Try>
+                <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="430.4,164" sap2010:WorkflowViewState.IdRef="MultipleAssign_2">
+                  <ui:MultipleAssign.AssignOperations>
+                    <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_4">
+                        <ui:AssignOperation.To>
+                          <OutArgument x:TypeArguments="x:Int32">[Cashin]</OutArgument>
+                        </ui:AssignOperation.To>
+                        <ui:AssignOperation.Value>
+                          <InArgument x:TypeArguments="x:Int32">[CInt(str_Cashin)]</InArgument>
+                        </ui:AssignOperation.Value>
+                      </ui:AssignOperation>
+                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_5">
+                        <ui:AssignOperation.To>
+                          <OutArgument x:TypeArguments="x:Int32">[OnUsCheck]</OutArgument>
+                        </ui:AssignOperation.To>
+                        <ui:AssignOperation.Value>
+                          <InArgument x:TypeArguments="x:Int32">[CInt(str_OnUsCheck)]</InArgument>
+                        </ui:AssignOperation.Value>
+                      </ui:AssignOperation>
+                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_6">
+                        <ui:AssignOperation.To>
+                          <OutArgument x:TypeArguments="x:Int32">[NotOnUsCheck]</OutArgument>
+                        </ui:AssignOperation.To>
+                        <ui:AssignOperation.Value>
+                          <InArgument x:TypeArguments="x:Int32">[CInt(str_NotOnUsCheck)]</InArgument>
+                        </ui:AssignOperation.Value>
+                      </ui:AssignOperation>
+                    </scg:List>
+                  </ui:MultipleAssign.AssignOperations>
+                </ui:MultipleAssign>
+              </TryCatch.Try>
+              <TryCatch.Catches>
+                <Catch x:TypeArguments="s:InvalidOperationException" sap:VirtualizedContainerService.HintSize="400,409.6" sap2010:WorkflowViewState.IdRef="Catch`1_3">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ActivityAction x:TypeArguments="s:InvalidOperationException">
+                    <ActivityAction.Argument>
+                      <DelegateInArgument x:TypeArguments="s:InvalidOperationException" Name="exception" />
+                    </ActivityAction.Argument>
+                    <Sequence sap:VirtualizedContainerService.HintSize="375.2,339.2" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Warn" Message="[String.Format(&quot;One of the variables Cashin:{0} , OnUsCheck:{1} or NotOnUsCheck:{2} was invalid, therefore the row was not executed correctly&quot;, Cashin, OnUsCheck, NotOnUsCheck)]" />
+                      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Send_ExceptionMail workflow" sap:VirtualizedContainerService.HintSize="333.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="Send_ExceptionMail.xaml">
+                        <ui:InvokeWorkflowFile.Arguments>
+                          <InArgument x:TypeArguments="si:FileInfo" x:Key="in_FileInfo">
+                            <mva:VisualBasicValue x:TypeArguments="si:FileInfo" ExpressionText="io_PDF" />
+                          </InArgument>
+                          <InArgument x:TypeArguments="s:Exception" x:Key="in_Exception">
+                            <mva:VisualBasicValue x:TypeArguments="s:Exception" ExpressionText="exception" />
+                          </InArgument>
+                        </ui:InvokeWorkflowFile.Arguments>
+                      </ui:InvokeWorkflowFile>
+                    </Sequence>
+                  </ActivityAction>
+                </Catch>
+              </TryCatch.Catches>
+            </TryCatch>
+            <ui:AddDataRow DataRow="{x:Null}" sap2010:Annotation.AnnotationText="The newly created variables are input into a new DataTable and passed as output." ArrayRow="[{Cashin, OnUsCheck, NotOnUsCheck}]" DataTable="[dt_Output]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="433.6,232" sap2010:WorkflowViewState.IdRef="AddDataRow_1">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:AddDataRow>
+          </Sequence>
+        </ActivityAction>
+      </ui:ForEachRow.Body>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:ForEachRow>
+    <ui:LogMessage DisplayName="Log Finish Loading" sap:VirtualizedContainerService.HintSize="508.8,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Extract_PDFCV finished.&quot;]" />
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Save_TempExcel workflow" sap:VirtualizedContainerService.HintSize="508.8,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Extract\Save_TempExcel.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:String)" x:Key="io_dct_Config">[io_dct_Config]</InArgument>
+        <InArgument x:TypeArguments="sd1:DataTable" x:Key="in_dt_ExtractedData">[dt_Output]</InArgument>
+        <InArgument x:TypeArguments="si:FileInfo" x:Key="in_FileInfo">[io_PDF]</InArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+  </Sequence>
+</Activity>
